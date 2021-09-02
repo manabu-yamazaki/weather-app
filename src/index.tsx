@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import RouterSwitch from './js/molecules/RouterSwitch';
+import Top from './js/pages/Top';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <RouterSwitch />
+    <Top titleText="Result" buttonText="Search" />
   </React.StrictMode>,
   document.getElementById('root')
 );
