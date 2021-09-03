@@ -1,8 +1,18 @@
 import React from 'react';
+import TextField from '@material-ui/core/TextField';
 
-const Text: React.FunctionComponent = () => {
+interface TextProps {
+  onChangeText: Function;
+}
+
+const Text: React.FunctionComponent<TextProps> = ({onChangeText}) => {
+
+  const handleChange = (event) => {
+    onChangeText(event);
+  }
+
   return (
-    <input type="text"></input>
+    <TextField label="City" variant="outlined" onChange={handleChange} />
   );
 }
 

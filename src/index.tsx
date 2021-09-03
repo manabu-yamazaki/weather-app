@@ -8,7 +8,7 @@ import Top from './js/pages/Top';
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <Top titleText="Result" buttonText="Search" />
+    <Top />
   </React.StrictMode>,
   document.getElementById('root')
 );

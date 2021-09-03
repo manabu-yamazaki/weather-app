@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import SubTitle from "../atoms/SubTitle";
-import WeatherInfo from "../atoms/WeatherInfo";
 import SearchCity from "../molecules/SearchCity";
+import ThreeHoursCardList from "../molecules/ThreeHoursCardList";
 
-interface CurrentWeatherPropsOptional {
+interface ForeCastEachThreeHoursPropsOptional {
   titleText: string;
   buttonText: string;
 }
 
-const CurrentWeather: React.FunctionComponent<CurrentWeatherPropsOptional> = ({titleText, buttonText}) => {
+const ForeCastEachThreeHours: React.FunctionComponent<ForeCastEachThreeHoursPropsOptional> = ({titleText, buttonText}) => {
   const [cityName, setCityName] = useState("");
   const [textValue, setTextValue] = useState("");
-
+  
   const searchWeather = () => {
     setCityName(textValue);
   }
@@ -24,9 +24,9 @@ const CurrentWeather: React.FunctionComponent<CurrentWeatherPropsOptional> = ({t
     <div>
       <SearchCity buttonText={buttonText} onChangeText={handleChange} onEvent={searchWeather} />
       <SubTitle text={titleText} />
-      <WeatherInfo cityName={cityName} />
+      <ThreeHoursCardList cityName={cityName} />
     </div>
   );
 }
 
-export default CurrentWeather;
+export default ForeCastEachThreeHours;

@@ -1,14 +1,9 @@
 import React from "react";
 import RouterSwitch from "../templates/RouterSwitch";
 
-interface TopProps {
-  titleText: string;
-  buttonText: string;
-}
-
-const Top: React.FunctionComponent<TopProps> = ({titleText, buttonText}) => {
+const Top: React.FunctionComponent = () => {
   return (
-    <RouterSwitch titleText={titleText} buttonText={buttonText} />
+    <RouterSwitch appText="Weather App" titleText="Result" buttonText="Search" />
   )
 }
 
