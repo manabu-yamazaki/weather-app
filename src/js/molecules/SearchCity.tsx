@@ -1,6 +1,7 @@
-import React from "react";
-import ButtonEx from "../atoms/ButtonEx";
-import Text from "../atoms/Text";
+import React from 'react';
+
+import ButtonEx from '../atoms/ButtonEx';
+import Text from '../atoms/Text';
 
 interface SearchCityProps {
   buttonText: string;

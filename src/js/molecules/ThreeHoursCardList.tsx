@@ -1,39 +1,79 @@
-import React from "react";
-import ThreeHourCard from "../atoms/ThreeHourCard";
-// import axios from "axios";
+import axios from 'axios';
+import React, { useState } from 'react';
+
+import Paper from '@material-ui/core/Paper';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+
+import ThreeHourCard from '../atoms/ThreeHourCard';
 
 interface ThreeHoursCardListProps {
   cityName: string;
 }
 
 const ThreeHoursCardList: React.FunctionComponent<ThreeHoursCardListProps> = ({cityName}) => {
-  // let data = {name:""};
+  const [weatherData, setWeatherData] = useState(
+    {
+      city: {name:""}, 
+      list: [
+        {
+          dt: "", 
+          main: {
+            temp:"",
+            temp_min: "",
+            temp_max:""
+          },
+          weather: [
+            {
+              description: "", 
+              icon: ""
+            }
+          ]
+        }
+      ]
+    }
+  );
 
-  // if(cityName){
-  //   console.log('cityName:', cityName);
-  //   axios.get('https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&appid=8942dc64e539e7780d740871d99384f5')
-  //   .then(res => {
-  //     console.log(res.data);
-  //     data = res.data;
-  //   })
-  // }
-
-  const data = [
-    { text: "1" },
-    { text: "2" }
-  ];
+  if(cityName && cityName !== weatherData.city.name){
+    axios.get('https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&appid=' + process.env.REACT_APP_API_KEY)
+    .then(res => {
+      setWeatherData(res.data);
+    }).catch(() => {
+      console.log("エラーが発生しました。")
+    })
+  }
 
   const renderCard = () => {
     return (
-      data.map((d,key) => <li key={key}><ThreeHourCard>{d.text}</ThreeHourCard></li>)
+      weatherData.list.map((data,key) => <ThreeHourCard key={key} data={data} />)
     )
   }
 
   return (
-    <ul>
-      {renderCard()}
-    </ul>
-  );
+    <div>
+      <div>{weatherData.city.name}</div>
+      <TableContainer component={Paper}>
+        <Table size="small" aria-label="a dense table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Date</TableCell>
+              <TableCell align="right">Weather</TableCell>
+              <TableCell align="right">Temp</TableCell>
+              <TableCell align="right">Temp Max</TableCell>
+              <TableCell align="right">Temp Min</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {renderCard()}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
+  )
 }
 
 export default ThreeHoursCardList;

@@ -2,11 +2,11 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import Empty from '../atoms/Empty';
+import Footer from '../atoms/Footer';
+import Header from '../atoms/Header';
+import RouteContainer from '../molecules/RouteContainer';
 import CurrentWeather from '../organisms/CurrentWeather';
 import ForeCastEachThreeHours from '../organisms/ForeCastEachThreeHours';
-import RouteContainer from '../molecules/RouteContainer';
-import Header from '../atoms/Header';
-import Footer from '../atoms/Footer';
 
 interface RouterSwitchProps {
   appText: string;

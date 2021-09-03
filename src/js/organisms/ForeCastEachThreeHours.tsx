@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import SubTitle from "../atoms/SubTitle";
-import SearchCity from "../molecules/SearchCity";
-import ThreeHoursCardList from "../molecules/ThreeHoursCardList";
+import { Link } from 'react-router-dom';
+
+import SubTitle from '../atoms/SubTitle';
+import SearchCity from '../molecules/SearchCity';
+import ThreeHoursCardList from '../molecules/ThreeHoursCardList';
 
 interface ForeCastEachThreeHoursPropsOptional {
   titleText: string;
@@ -11,7 +13,9 @@ interface ForeCastEachThreeHoursPropsOptional {
 const ForeCastEachThreeHours: React.FunctionComponent<ForeCastEachThreeHoursPropsOptional> = ({titleText, buttonText}) => {
   const [cityName, setCityName] = useState("");
   const [textValue, setTextValue] = useState("");
-  
+
+  console.log("３画面目")
+
   const searchWeather = () => {
     setCityName(textValue);
   }
@@ -22,6 +26,7 @@ const ForeCastEachThreeHours: React.FunctionComponent<ForeCastEachThreeHoursProp
 
   return (
     <div>
+      <Link to="/">Empty</Link>
       <SearchCity buttonText={buttonText} onChangeText={handleChange} onEvent={searchWeather} />
       <SubTitle text={titleText} />
       <ThreeHoursCardList cityName={cityName} />

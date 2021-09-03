@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import SubTitle from "../atoms/SubTitle";
-import WeatherInfo from "../atoms/WeatherInfo";
-import SearchCity from "../molecules/SearchCity";
+import { Link } from 'react-router-dom';
+
+import SubTitle from '../atoms/SubTitle';
+import WeatherInfo from '../atoms/WeatherInfo';
+import SearchCity from '../molecules/SearchCity';
 
 interface CurrentWeatherPropsOptional {
   titleText: string;
@@ -11,6 +13,8 @@ interface CurrentWeatherPropsOptional {
 const CurrentWeather: React.FunctionComponent<CurrentWeatherPropsOptional> = ({titleText, buttonText}) => {
   const [cityName, setCityName] = useState("");
   const [textValue, setTextValue] = useState("");
+
+  console.log("２画面目")
 
   const searchWeather = () => {
     setCityName(textValue);
@@ -22,6 +26,7 @@ const CurrentWeather: React.FunctionComponent<CurrentWeatherPropsOptional> = ({t
 
   return (
     <div>
+      <Link to="/">Empty</Link>
       <SearchCity buttonText={buttonText} onChangeText={handleChange} onEvent={searchWeather} />
       <SubTitle text={titleText} />
       <WeatherInfo cityName={cityName} />

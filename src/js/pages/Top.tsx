@@ -1,5 +1,6 @@
-import React from "react";
-import RouterSwitch from "../templates/RouterSwitch";
+import React from 'react';
+
+import RouterSwitch from '../templates/RouterSwitch';
 
 const Top: React.FunctionComponent = () => {
   return (
