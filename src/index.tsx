@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Top from './js/pages/Top';
+import RouterSwitch from './js/RouterSwitch';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <Top />
+    <RouterSwitch />
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -7,13 +7,8 @@ interface TextProps {
 }
 
 const Text: React.FunctionComponent<TextProps> = ({onChangeText}) => {
-
-  const handleChange = (event) => {
-    onChangeText(event);
-  }
-
   return (
-    <TextField label="City" variant="outlined" onChange={handleChange} />
+    <TextField label="City" variant="outlined" onChange={(event) => onChangeText(event)} />
   );
 }
 

@@ -1,5 +1,4 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+import React from 'react';
 
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -12,44 +11,13 @@ import TableRow from '@material-ui/core/TableRow';
 import ThreeHourCard from '../atoms/ThreeHourCard';
 
 interface ThreeHoursCardListProps {
-  cityName: string;
+  weatherData: any;
 }
 
-const ThreeHoursCardList: React.FunctionComponent<ThreeHoursCardListProps> = ({cityName}) => {
-  const [weatherData, setWeatherData] = useState(
-    {
-      city: {name:""}, 
-      list: [
-        {
-          dt: "", 
-          main: {
-            temp:"",
-            temp_min: "",
-            temp_max:""
-          },
-          weather: [
-            {
-              description: "", 
-              icon: ""
-            }
-          ]
-        }
-      ]
-    }
-  );
-
-  if(cityName && cityName !== weatherData.city.name){
-    axios.get('https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&appid=' + process.env.REACT_APP_API_KEY)
-    .then(res => {
-      setWeatherData(res.data);
-    }).catch(() => {
-      console.log("エラーが発生しました。")
-    })
-  }
-
+const ThreeHoursCardList: React.FunctionComponent<ThreeHoursCardListProps> = ({weatherData}) => {
   const renderCard = () => {
     return (
-      weatherData.list.map((data,key) => <ThreeHourCard key={key} data={data} />)
+      weatherData.list.map((data,key: React.Key) => <ThreeHourCard key={key} data={data} />)
     )
   }
 

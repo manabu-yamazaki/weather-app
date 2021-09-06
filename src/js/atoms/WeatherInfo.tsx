@@ -1,35 +1,23 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+import React from 'react';
 
 interface WeatherInfoProps {
-  cityName: string;
+  weatherData: any;
 }
 
-const WeatherInfo: React.FunctionComponent<WeatherInfoProps> = ({cityName}) => {
-  const [weatherData, setWeatherData] = useState({name:"", weather: [{description: ""}], main: {temp: "", temp_max: "", temp_min: ""}});
-  
-  if(cityName && cityName !== weatherData.name){
-    axios.get('https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + process.env.REACT_APP_API_KEY)
-    .then(res => {
-      setWeatherData(res.data);
-    }).catch(() => {
-      console.log("エラーが発生しました。")
-    })
-  }
+const renderWeather = (weather) => {
+  return (
+    weather.map((data,key: React.Key) => <li key={key}>{data.description}</li>)
+  )
+}
 
-  const renderWeather = () => {
-    return (
-      weatherData.weather.map((data,key) => <li key={key}>{data.description}</li>)
-    )
-  }
-
+const WeatherInfo: React.FunctionComponent<WeatherInfoProps> = ({weatherData}) => {
   return (
     <div>
       <div>{weatherData.name}</div>
       <div>
         <h3>天気</h3>
         <ul>
-          {renderWeather()}
+          {renderWeather(weatherData.weather)}
         </ul>
       </div>
       <div>現在の気温：{weatherData.main.temp}</div>

@@ -12,14 +12,9 @@ interface SearchCityProps {
 }
 
 const SearchCity: React.FunctionComponent<SearchCityProps> = ({buttonText, onChangeText, onEvent}) => {
-
-  const handleChange = (event) => {
-    onChangeText(event);
-  }
-  
   return (
     <div>
-      <Text onChangeText={handleChange} />
+      <Text onChangeText={onChangeText} />
       <ButtonEx text={buttonText} onClickButton={onEvent} />
     </div>
   );

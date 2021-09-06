@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import RouterSwitch from '../templates/RouterSwitch';
+import TopTemplate from '../templates/TopTemplate';
 
 const Top: React.FunctionComponent = () => {
+  useEffect(() => {
+    console.log("１画面目")
+  }, [])
+  
   return (
-    <RouterSwitch appText="Weather App" titleText="Result" buttonText="Search" />
+    <TopTemplate appText="Weather App" />
   )
 }
 
