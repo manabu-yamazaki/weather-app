@@ -8,9 +8,30 @@ const CurrentWeather: React.FunctionComponent = () => {
     console.log("２画面目")
   }, [])
 
-  const [textValue, setTextValue] = useState("");
-  const [weatherData, setWeatherData] = useState({name:"", weather: [{description: ""}], main: {temp: "", temp_max: "", temp_min: ""}});
   const [errorMessage, setErrorMessage] = useState("");
+  const [textValue, setTextValue] = useState("");
+  const [weatherData, setWeatherData] = useState(
+    {
+      name:"",
+      weather: [
+        {
+          description: "",
+          icon: ""
+        }
+      ],
+      main: {
+        temp: "",
+        feel_like: "",
+        pressure: "",
+        humidity: "",
+        temp_max: "",
+        temp_min: ""
+      },
+      wind: {
+        speed: ""
+      }
+    }
+  );
 
   const searchWeather = useCallback(
     () => {

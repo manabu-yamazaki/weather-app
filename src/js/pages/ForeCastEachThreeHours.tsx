@@ -17,16 +17,17 @@ const ForeCastEachThreeHours: React.FunctionComponent = () => {
         {
           dt: "", 
           main: {
-            temp:"",
-            temp_min: "",
-            temp_max:""
+            temp: ""
           },
           weather: [
             {
               description: "", 
               icon: ""
             }
-          ]
+          ],
+          wind: {
+            speed: ""
+          }
         }
       ]
     }

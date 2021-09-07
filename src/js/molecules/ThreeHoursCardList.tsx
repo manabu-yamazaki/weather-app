@@ -28,11 +28,9 @@ const ThreeHoursCardList: React.FunctionComponent<ThreeHoursCardListProps> = ({w
         <Table size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
-              <TableCell>Date</TableCell>
-              <TableCell align="right">Weather</TableCell>
-              <TableCell align="right">Temp</TableCell>
-              <TableCell align="right">Temp Max</TableCell>
-              <TableCell align="right">Temp Min</TableCell>
+              <TableCell>日付</TableCell>
+              <TableCell align="right">天気</TableCell>
+              <TableCell align="right">気温</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
