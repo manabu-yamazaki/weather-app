@@ -1,6 +1,6 @@
-import axios from 'axios';
-import React, { useCallback, useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 
+import axiosEx from "../axios";
 import CurrentWeatherTemplate from '../templates/CurrentWeatherTemplate';
 
 const CurrentWeather: React.FunctionComponent = () => {
@@ -10,6 +10,7 @@ const CurrentWeather: React.FunctionComponent = () => {
 
   const [errorMessage, setErrorMessage] = useState("");
   const [textValue, setTextValue] = useState("");
+  //型定義
   const [weatherData, setWeatherData] = useState(
     {
       name:"",
@@ -33,32 +34,23 @@ const CurrentWeather: React.FunctionComponent = () => {
     }
   );
 
-  const searchWeather = useCallback(
-    () => {
-      axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${textValue}&appid=${process.env.REACT_APP_API_KEY}`)
-      .then(res => {
-        setWeatherData(res.data);
-      }).catch(() => {
-        console.log("エラーが発生しました。")
-        setErrorMessage("エラーが発生しました。")
-      })
-    },
-    [textValue],
-  )
-
-  const data = useMemo(
-    () => {
-      return weatherData
-    },
-    [weatherData],
-  )
+  const searchWeather = async () => {
+    try {
+      const resp = await axiosEx.getWeatherInfo(textValue)
+      setWeatherData(resp);
+      setErrorMessage("")
+    } catch (e) {
+      console.log("エラーが発生しました。")
+      setErrorMessage("エラーが発生しました。")
+    }
+  }
 
   const handleChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
     setTextValue(event.target.value);
   }
   
   return (
-    <CurrentWeatherTemplate appText="Weather App" titleText="Result" buttonText="Search" weatherData={data} onChangeText={handleChange} onEvent={searchWeather} ErrorMessageText={errorMessage}/>
+    <CurrentWeatherTemplate appText="Weather App" titleText="Result" buttonText="Search" weatherData={weatherData} onChangeText={handleChange} onEvent={searchWeather} ErrorMessageText={errorMessage}/>
   )
 }
 
