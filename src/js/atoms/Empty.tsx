@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Empty: React.FunctionComponent = () => (
-  <div>
+  <div className="emptyComponent">
     <h1>Empty</h1>
   </div>
 );

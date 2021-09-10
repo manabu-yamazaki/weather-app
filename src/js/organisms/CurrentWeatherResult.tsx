@@ -20,7 +20,7 @@ interface CurrentWeatherResultProps {
 const CurrentWeatherResult: React.FunctionComponent<CurrentWeatherResultProps> = ({titleText, buttonText, weatherData, onChangeText, onEvent, ErrorMessageText}) => {
   return (
     <div>
-      <Link to="/">Empty</Link>
+      <Link className="routeContainer__linkEmpty" to="/">Empty</Link>
       <SearchCity buttonText={buttonText} onChangeText={onChangeText} onEvent={onEvent} />
       <SubTitle text={titleText} />
       <WeatherInfo weatherData={weatherData} />

@@ -11,7 +11,9 @@ describe("<Top />", () => {
         >
           Weather App
         </div>
-        <div>
+        <div
+          className="emptyComponent"
+        >
           <h1>
             Empty
           </h1>

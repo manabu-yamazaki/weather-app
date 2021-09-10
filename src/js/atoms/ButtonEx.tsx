@@ -11,7 +11,7 @@ interface ButtonProps {
 
 const ButtonEx: React.FunctionComponent<ButtonProps> = ({text, onClickButton}) => {
   return (
-    <Button variant="contained" color="primary" onClick={onClickButton}>{text}</Button>
+    <Button variant="contained" color="primary" className="searchButton" onClick={onClickButton}>{text}</Button>
   );
 }
 

@@ -1,7 +1,7 @@
 import renderer from "react-test-renderer";
 import CurrentWeather from "../pages/CurrentWeather";
 import { BrowserRouter } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 import axiosEx from "../axios";
 
 describe("<CurrentWeather />", () => {
@@ -23,6 +23,7 @@ describe("<CurrentWeather />", () => {
         </div>
         <div>
           <a
+            className="routeContainer__linkEmpty"
             href="/"
             onClick={[Function]}
           >
@@ -30,7 +31,7 @@ describe("<CurrentWeather />", () => {
           </a>
           <div>
             <div
-              className="MuiFormControl-root MuiTextField-root"
+              className="MuiFormControl-root MuiTextField-root cityName"
             >
               <label
                 className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
@@ -69,7 +70,7 @@ describe("<CurrentWeather />", () => {
               </div>
             </div>
             <button
-              className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+              className="MuiButtonBase-root MuiButton-root MuiButton-contained searchButton MuiButton-containedPrimary"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -96,7 +97,9 @@ describe("<CurrentWeather />", () => {
           <h2>
             Result
           </h2>
-          <div>
+          <div
+            className="weatherInfo"
+          >
             <div>
               
             </div>
@@ -110,7 +113,9 @@ describe("<CurrentWeather />", () => {
                 </li>
               </ul>
             </div>
-            <div>
+            <div
+              className="weatherInfo__itemTemp"
+            >
               気温：
               
             </div>
@@ -153,7 +158,7 @@ describe("<CurrentWeather />", () => {
   });
 });
 
-let mockError = false
+// let mockError = false;
 // jest.mock('axios', () => ({
 //   get: (url, body) => {
 //     return new Promise(resolve => {
@@ -163,13 +168,29 @@ let mockError = false
 //     })
 //   }
 // }));
-jest.mock('axios');
+
+// test('async', async () => {
+//   const res = axiosEx.getWeatherInfo("")
+//   const expected = 1
+//   expect(res).toEqual(expected)
+// })
+
+jest.mock("axios");
 
 test('searchWeather ("") => ', async () => {
-  const weather = {name: "Tokyo"}
-  // const expected = {name: ""}
-  const resp = {data: weather}
-  axios.get.mockResolvedValue(resp)
+  const weather = null;
+  const resp = { data: weather };
+  axios.get.mockResolvedValue(resp);
 
-  return axiosEx.getWeatherInfo("Tokyo").then(data => expect(data).toEqual(weather));
-})
+  return axiosEx.getWeatherInfo("").then((data) => expect(data).toBeNull);
+});
+
+test('searchWeather ("") => ', async () => {
+  const weather = { name: "Tokyo" };
+  const resp = { data: weather };
+  axios.get.mockResolvedValue(resp);
+
+  return axiosEx
+    .getWeatherInfo("Tokyo")
+    .then((data) => expect(data).toEqual(weather));
+});

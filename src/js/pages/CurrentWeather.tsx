@@ -36,7 +36,9 @@ const CurrentWeather: React.FunctionComponent = () => {
 
   const searchWeather = async () => {
     try {
+      // setErrorMessage("test1")
       const resp = await axiosEx.getWeatherInfo(textValue)
+      // setErrorMessage("test2")
       setWeatherData(resp);
       setErrorMessage("")
     } catch (e) {
